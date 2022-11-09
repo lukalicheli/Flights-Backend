@@ -4,10 +4,7 @@ import com.flightsApp.Models.Flight;
 import com.flightsApp.Models.FlightInfo;
 import com.flightsApp.Service.FlightsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,13 +25,13 @@ public class FlightsController {
 //        return flights;
 //    }
 
-    @GetMapping("/flights")
+    @PostMapping("/flights")
     public List<Flight> getAllFlightsByDepartureCity(@RequestBody FlightInfo flightInfo){
        List<Flight> flights = flightsService.getAllFlightsByDepartureCity(flightInfo.getDepart());
         return flights;
     }
 
-    @GetMapping("/flights/all")
+    @PostMapping("/flights/all")
     public List<Flight> getAllFlightsByDepartureCityAndArrivalCity(@RequestBody FlightInfo flightInfo){
         System.out.println("print");
         List<Flight> flights = flightsService.getAllFlightsByDepartureCityAndArrivalCity(flightInfo.getDepart(), flightInfo.getArrive());

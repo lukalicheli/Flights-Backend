@@ -15,8 +15,10 @@ public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column
-    private int departure_city;
-    @Column
-    private int arrival_city;
+    @ManyToOne
+    @JoinColumn(name="departure_id", referencedColumnName = "id")
+    private City departureCity;
+    @ManyToOne
+    @JoinColumn(name="arrival_id", referencedColumnName = "id")
+    private City arrivalCity;
 }
